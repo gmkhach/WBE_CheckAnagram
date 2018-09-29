@@ -16,9 +16,9 @@ namespace WBE_CheckAnagram
                 try
                 {
                     Console.Write("Input a string\n\n>>> ");
-                    string input1 = Console.ReadLine();
+                    string input1 = Console.ReadLine().Trim();
                     Console.Write("Input a string\n\n>>> ");
-                    string input2 = Console.ReadLine();
+                    string input2 = Console.ReadLine().Trim();
                     if (CheckAnagram(input1, input2))
                     {
                         Console.WriteLine("the strings are anagrams of each other");
@@ -42,15 +42,18 @@ namespace WBE_CheckAnagram
         static bool CheckAnagram(string input1, string input2)
         {
             string reverseInput1 = "";
+            // create a FILO data structure to prepare for reverseing input1
             Stack myStack = new Stack();
-            foreach (var x in input1)
+            foreach (var ch in input1)
             {
-                myStack.Push(x);
+                myStack.Push(ch);
             }
+            // build the reverse string of input1
             while(myStack.Count != 0)
             {
                 reverseInput1 += myStack.Pop();
             }
+            // compare the reversed input1 to input2
             if (reverseInput1 == input2)
             {
                 return true;
