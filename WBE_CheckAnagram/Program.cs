@@ -17,7 +17,7 @@ namespace WBE_CheckAnagram
                 {
                     Console.Write("\nInput two string separated by a comma\n\n>>> ");
                     string[] input = Console.ReadLine().Trim().Split(',');
-                    Console.WriteLine("\n" + ( CheckAnagram(input[0].Trim(), input[1].Trim()) ? "the strings are anagrams of each other" : "the strings are not anagrams of each other" ));
+                    Console.WriteLine("\n" + (CheckAnagram(input[0].Trim(), input[1].Trim()) ? "the strings are anagrams of each other" : "the strings are not anagrams of each other"));
                 }
                 catch (Exception ex)
                 {
@@ -31,20 +31,18 @@ namespace WBE_CheckAnagram
 
         static bool CheckAnagram(string input1, string input2)
         {
-            string reverseInput1 = "";
-            // create a FILO data structure to prepare for reverseing input1
-            Stack myStack = new Stack();
-            foreach (var ch in input1)
+            if (input1.Length != input2.Length)
             {
-                myStack.Push(ch);
+                return false;
             }
-            // build the reverse string of input1
-            while(myStack.Count != 0)
+            for (int i = 0; i < input1.Length / 2; i++)
             {
-                reverseInput1 += myStack.Pop();
+                if (input1[i] != input2[input2.Length - 1 - i])
+                {
+                    return false;
+                }
             }
-            // compare the reversed input1 to input2
-            return reverseInput1 == input2 ? true : false;
+            return true;
         }
     }
 }
