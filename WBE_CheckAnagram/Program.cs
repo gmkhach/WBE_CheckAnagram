@@ -35,8 +35,10 @@ namespace WBE_CheckAnagram
             {
                 return false;
             }
+            // looping through the array comparing the first and last characters, then working our way in, towards the middle, repeating the smae comparison at every step along the way.
             for (int i = 0; i < input1.Length / 2; i++)
             {
+                // as soon as the predicate is not satisfied first time return false.
                 if (input1[i] != input2[input2.Length - 1 - i])
                 {
                     return false;
