@@ -1,4 +1,8 @@
-﻿using System;
+﻿/**
+ * Given two strings s and t, write a function to determine if t is an anagram of s.
+ * ie: 'rat' and 'car' returns false, 'rat' and 'tar' returns true
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +21,7 @@ namespace WBE_CheckAnagram
                 {
                     Console.Write("\nInput two string separated by a comma\n\n>>> ");
                     string[] input = Console.ReadLine().Trim().Split(',');
-                    Console.WriteLine("\n" + (CheckAnagram(input[0].Trim(), input[1].Trim()) ? "the strings are anagrams of each other" : "the strings are not anagrams of each other"));
+                    Console.WriteLine("\nThe strings are" + (CheckAnagram(input[0].Trim(), input[1].Trim()) ? "" : "not ") + "anagrams of each other");
                 }
                 catch (Exception ex)
                 {
@@ -31,18 +35,10 @@ namespace WBE_CheckAnagram
 
         static bool CheckAnagram(string input1, string input2)
         {
-            if (input1.Length != input2.Length)
+            foreach(var ch in input1)
             {
-                return false;
-            }
-            // looping through the array comparing the first and last characters, then working our way in, towards the middle, repeating the smae comparison at every step along the way.
-            for (int i = 0; i < input1.Length / 2; i++)
-            {
-                // as soon as the predicate is not satisfied first time return false.
-                if (input1[i] != input2[input2.Length - 1 - i])
-                {
+                if (!input2.Contains(ch))
                     return false;
-                }
             }
             return true;
         }
