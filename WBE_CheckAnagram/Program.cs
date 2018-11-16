@@ -42,7 +42,6 @@ namespace WBE_CheckAnagram
                 {
                     if (input2.Contains(ch))
                     {
-                        input1 = input1.Remove(input1.IndexOf(ch), 1);
                         input2 = input2.Remove(input2.IndexOf(ch), 1);
                     }
                     else
